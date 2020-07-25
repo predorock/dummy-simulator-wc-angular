@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "dummy-simulator-wc-angular"
+    }
+  },
+  "defaultProject": "dummy-simulator-wc-angular",
+  "cli": {
+    "analytics": false
+  }
 }
