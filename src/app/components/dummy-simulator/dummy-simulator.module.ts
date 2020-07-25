@@ -3,14 +3,21 @@ import { CommonModule } from '@angular/common';
 import { DummySimulatorComponent } from './dummy-simulator.component';
 import {createCustomElement} from '@angular/elements';
 import { BrowserModule } from '@angular/platform-browser';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {CurrencyPipe} from '../../pipes/currency.pipe';
 
 
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    DummySimulatorComponent,
+    CurrencyPipe
+  ],
   imports: [
     BrowserModule,
-    CommonModule
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   entryComponents: [
     DummySimulatorComponent
