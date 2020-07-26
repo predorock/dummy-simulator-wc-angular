@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 
 @Component({
@@ -7,6 +7,10 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./dummy-simulator.component.scss']
 })
 export class DummySimulatorComponent implements OnInit {
+
+  @Input()
+  config: string;
+  configObj: any;
 
   simulatorForm: FormGroup;
 
@@ -21,13 +25,21 @@ export class DummySimulatorComponent implements OnInit {
         Validators.min(1)
       ])]
     });
+
+    console.log(this.config);
+    this.configObj = JSON.parse(this.config);
+    console.log(this.configObj);
   }
 
   formSubmit() {
     if (this.simulatorForm.valid) {
       const v = this.simulatorForm.value.value;
-      this.interestValue = v + (v * 0.042) ;
+      this.interestValue = v + (v * this.getInterestValue() ) ;
     }
+  }
+
+  private getInterestValue() {
+    return !!this.configObj.interestValue ?  this.configObj.interestValue : 0.042;
   }
 
 }
